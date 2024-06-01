@@ -135,7 +135,34 @@ d)  Come up with a (research) question you want to answer with the data and brie
 I am interested in how age is related to how much time Americans spend with their friends.
 
 e)  Use R to answer your chosen question.
+
+```{r}
+american_time <- read_csv("data/Who Americans spend time with - American Time Use Survey (2009-2019).csv")
+
+american_time_clean <- american_time %>% rename(friends = `Time spent with friends, by age of respondent (United States)`, year = Year)
+```
+
+
+```{r}
+cor(american_time_clean$year, american_time_clean$friends)
+```
+
+
+```{r}
+model <- lm(friends ~ year, american_time_clean)
+
+summary(model)
+```
+
+According to the data, there is a highly significant negative relationship between Americans' age and the amount of time they spend with friends in a day. On average, this amount of time decreases by about 1 minute each year.
+
 f)  Create a meaningful plot / figure with the dataset. Make sure to provide a figure caption (via the chunk options / Rmarkdown) and correctly label the figure.
+
+```{r, fig.cap = "Minutes in a day Americans spend with their friends across their lives"}
+ggplot(data = american_time_clean,
+       aes(x = year, y = friends)) + geom_line() + labs(x = "age", y = "minutes of day spent with friends") + theme_minimal()
+```
+
 
 ## Final Note
 
