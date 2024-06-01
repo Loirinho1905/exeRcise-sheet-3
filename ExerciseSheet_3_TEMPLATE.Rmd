@@ -122,13 +122,18 @@ vornahmen_comb %>% head(10) %>% kable(caption = "Top 10 most popular baby names 
 This exercise is a bit more open-ended. You can choose any dataset from [Our World in Data](https://ourworldindata.org/) and analyze it, while determining the research question yourself.
 
 a)  Go to <https://github.com/owid/owid-datasets/tree/master/datasets> and choose a dataset that interests you. You can have a look at <https://ourworldindata.org/> to gather some inspiration.
+
 b)  Download the dataset and track it in git.
+
 c)  Put the name / title of the dataset and a link to it below.
 
--   Dataset Name: ...
--   Link: <https://github.com/owid/owid-datasets/>...
+-   Dataset Name: Who Americans spend time with - American Time Use Survey (2009-2019).csv
+-   Link: <https://github.com/owid/owid-datasets/blob/master/datasets/Who%20Americans%20spend%20time%20with%20-%20American%20Time%20Use%20Survey%20(2009-2019)/Who%20Americans%20spend%20time%20with%20-%20American%20Time%20Use%20Survey%20(2009-2019).csv>
 
 d)  Come up with a (research) question you want to answer with the data and briefly explain why you believe this is an interesting question within one sentence. It should be a question that can be answered with the dataset and using R.
+
+
+
 e)  Use R to answer your chosen question.
 f)  Create a meaningful plot / figure with the dataset. Make sure to provide a figure caption (via the chunk options / Rmarkdown) and correctly label the figure.
 
