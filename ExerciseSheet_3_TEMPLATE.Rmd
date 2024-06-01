@@ -106,8 +106,16 @@ e)  Combine both datasets into one using `bind_rows()`.
 vornahmen2223 <- bind_rows(vornahmen22_year, vornahmen23_year)
 ```
 
-
 f)  Combine the counts for same names to determine the most popular names across both years. Print out the top 10 names in a nicely formatted table for both years. Include a table caption.
+
+```{r}
+library(knitr)
+
+vornahmen_comb <- vornahmen2223 %>% group_by(Vorname) %>% summarise(Anzahl = sum(Anzahl)) %>% arrange(desc(Anzahl))
+
+vornahmen_comb %>% head(10) %>% kable(caption = "Top 10 most popular baby names in Munich (Germany) in 2022 and 2023, combined")
+```
+
 
 ## Exercise 4: Open Analysis (4 points)
 
