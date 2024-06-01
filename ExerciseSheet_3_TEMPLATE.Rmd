@@ -76,12 +76,22 @@ The variable "Anzahl is a character variable, because it does not include accura
 library(tidyverse)
 
 vornahmen22num <- vornahmen2022 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2"))
-vornahmen22num <- as.numeric(vornahmen22num$Anzahl)
+vornahmen22num$Anzahl <- as.numeric(vornahmen22num$Anzahl)
+
+vornahmen23num <- vornahmen2023 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2"))
+vornahmen23num$Anzahl <- as.numeric(vornahmen23num$Anzahl)
 ```
 
 My solution is a pragmatic one. Since the group of "4 oder weniger" includes a huge amount of names, it would not do to exclude them from the dataset. As we cannot know the exact count of these names, however, we have to account for the variance in their numbers. This is why my solution opts to assign them the value 2. It is a compromise between the imprecision and completeness of the data in question.
 
 c)  Calculate the total number of babies born in Munich in 2022 and 2023. Which year had the bigger baby-boom?
+
+```{r}
+sum(vornahmen22num$Anzahl)
+sum(vornahmen23num$Anzahl)
+```
+
+More babies were born in Munich in 2022 than in 2023.
 
 d)  Add a new column `year` to both datasets which holds the correct year for each.
 
