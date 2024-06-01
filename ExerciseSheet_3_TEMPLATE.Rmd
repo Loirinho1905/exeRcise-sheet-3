@@ -59,15 +59,15 @@ a)  Download the data for both years and track it in git. For small datasets lik
 b)  Load the data for both years into R. Check the type of the count variable ("Anzahl") and look into the data to determine why it is not numeric? Fix the problem in an appropriate manner, it is OK if some of the counts are inaccurate because of this. Explain your solution and the repercussions.
 
 ```{r}
-Vornahmen2023 <- read.csv("data/Vornamen2023.csv")
-Vornahmen2022 <- read.csv("data/Vornamen2022.csv")
+vornahmen2023 <- read.csv("data/Vornamen2023.csv")
+vornahmen2022 <- read.csv("data/Vornamen2022.csv")
 ```
 
 ```{r}
-is.numeric(Vornahmen2023$Anzahl)
-typeof(Vornahmen2023$Anzahl)
-is.numeric(Vornahmen2022$Anzahl)
-typeof(Vornahmen2022$Anzahl)
+is.numeric(vornahmen2023$Anzahl)
+typeof(vornahmen2023$Anzahl)
+is.numeric(vornahmen2022$Anzahl)
+typeof(vornahmen2022$Anzahl)
 ```
 
 The variable "Anzahl is a character variable, because it does not include accurate counts beneath four, listing these cases as "4 or less" instead.
@@ -75,9 +75,11 @@ The variable "Anzahl is a character variable, because it does not include accura
 ```{r}
 library(tidyverse)
 
+vornahmen22num <- vornahmen2022 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2"))
+vornahmen22num <- as.numeric(vornahmen22num$Anzahl)
 ```
 
-
+My solution is a pragmatic one. Since the group of "4 oder weniger" includes a huge amount of names, it would not do to exclude them from the dataset. As we cannot know the exact count of these names, however, we have to account for the variance in their numbers. This is why my solution opts to assign them the value 2. It is a compromise between the imprecision and completeness of the data in question.
 
 c)  Calculate the total number of babies born in Munich in 2022 and 2023. Which year had the bigger baby-boom?
 
