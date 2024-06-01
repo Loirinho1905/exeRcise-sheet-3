@@ -45,6 +45,7 @@ a)  Create a new repository on GitHub in your account named `exeRcise-sheet-3`. 
   https://github.com/Loirinho1905/exeRcise-sheet-3.git
 
 b)  Push your code to this new repository by copying and executing the snippet on github listed under `…or push an existing repository from the command line`.
+
 c)  Regularly push your latest changes to GitHub again and especially do so when you are finished with this sheet.
 
 ## Exercise 3: Baby-Names in Munich (3.5 Points)
@@ -56,6 +57,27 @@ Link: <https://opendata.muenchen.de/dataset/vornamen-von-neugeborenen>
 a)  Download the data for both years and track it in git. For small datasets like these adding them to git is not a problem.
 
 b)  Load the data for both years into R. Check the type of the count variable ("Anzahl") and look into the data to determine why it is not numeric? Fix the problem in an appropriate manner, it is OK if some of the counts are inaccurate because of this. Explain your solution and the repercussions.
+
+```{r}
+Vornahmen2023 <- read.csv("data/Vornamen2023.csv")
+Vornahmen2022 <- read.csv("data/Vornamen2022.csv")
+```
+
+```{r}
+is.numeric(Vornahmen2023$Anzahl)
+typeof(Vornahmen2023$Anzahl)
+is.numeric(Vornahmen2022$Anzahl)
+typeof(Vornahmen2022$Anzahl)
+```
+
+The variable "Anzahl is a character variable, because it does not include accurate counts beneath four, listing these cases as "4 or less" instead.
+
+```{r}
+library(tidyverse)
+
+```
+
+
 
 c)  Calculate the total number of babies born in Munich in 2022 and 2023. Which year had the bigger baby-boom?
 
