@@ -31,7 +31,7 @@ d)  Name 2 strengths and 2 weaknesses of git. (Don't forget to create a commit a
     Pros: - Git is great for collaborating
           - Git allows you to go back in time and understand the stages a certain project went through
           
-    Cons: - Git has to be explicitly used, which means it does not run in the background
+    Cons: - Git has to be explicitly used, which means it does not run in the                   background/automatically
           - Git can be quite complicated to operate, especially at the beginning
 
 e)  Knit this exercise sheet. Some new files will automatically be generated when knitting the sheet e.g. the HTML page. Ignore these files, as we only want to track the source files themselves.
@@ -75,14 +75,14 @@ The variable "Anzahl is a character variable, because it does not include accura
 ```{r}
 library(tidyverse)
 
-vornahmen22num <- vornahmen2022 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2"))
+vornahmen22num <- vornahmen2022 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2.5"))
 vornahmen22num$Anzahl <- as.numeric(vornahmen22num$Anzahl)
 
-vornahmen23num <- vornahmen2023 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2"))
+vornahmen23num <- vornahmen2023 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2.5"))
 vornahmen23num$Anzahl <- as.numeric(vornahmen23num$Anzahl)
 ```
 
-My solution is a pragmatic one. Since the group of "4 oder weniger" includes a huge amount of names, it would not do to exclude them from the dataset. As we cannot know the exact count of these names, however, we have to account for the variance in their numbers. This is why my solution opts to assign them the value 2. It is a compromise between the imprecision and completeness of the data in question.
+My solution is a pragmatic one. Since the group of "4 oder weniger" includes a huge amount of names, it would not do to exclude them from the dataset. As we cannot know the exact count of these names, however, we have to account for the variance in their numbers. This is why my solution opts to assign them the value 2.5, which, assuming a balanced distribution, is the median between 1 and 4. It is therefore a compromise between the imprecision and completeness of the data in question.
 
 c)  Calculate the total number of babies born in Munich in 2022 and 2023. Which year had the bigger baby-boom?
 
