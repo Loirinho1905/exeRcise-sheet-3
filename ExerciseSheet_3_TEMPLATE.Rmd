@@ -144,7 +144,9 @@ I am interested in how age is related to how much time Americans spend with thei
 e)  Use R to answer your chosen question.
 
 ```{r}
-american_time <- read_csv("data/Who Americans spend time with - American Time Use Survey (2009-2019).csv")
+american_time <- read_csv(
+  "data/Who Americans spend time with - American Time Use Survey (2009-2019).csv"
+  )
 
 american_time_clean <- american_time %>% 
   rename(friends = `Time spent with friends, by age of respondent (United States)`, 
