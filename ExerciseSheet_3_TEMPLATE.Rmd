@@ -75,10 +75,14 @@ The variable "Anzahl is a character variable, because it does not include accura
 ```{r}
 library(tidyverse)
 
-vornahmen22num <- vornahmen2022 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2.5"))
+vornahmen22num <- vornahmen2022 %>% 
+  mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, 
+                            Anzahl == "4 oder weniger" ~ "2.5"))
 vornahmen22num$Anzahl <- as.numeric(vornahmen22num$Anzahl)
 
-vornahmen23num <- vornahmen2023 %>% mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, Anzahl == "4 oder weniger" ~ "2.5"))
+vornahmen23num <- vornahmen2023 %>% 
+  mutate(Anzahl = case_when(Anzahl != "4 oder weniger" ~ Anzahl, 
+                            Anzahl == "4 oder weniger" ~ "2.5"))
 vornahmen23num$Anzahl <- as.numeric(vornahmen23num$Anzahl)
 ```
 
@@ -111,9 +115,12 @@ f)  Combine the counts for same names to determine the most popular names across
 ```{r}
 library(knitr)
 
-vornahmen_comb <- vornahmen2223 %>% group_by(Vorname) %>% summarise(Anzahl = sum(Anzahl)) %>% arrange(desc(Anzahl))
+vornahmen_comb <- vornahmen2223 %>% group_by(Vorname) %>% 
+  summarise(Anzahl = sum(Anzahl)) %>% arrange(desc(Anzahl))
 
-vornahmen_comb %>% head(10) %>% kable(caption = "Top 10 most popular baby names in Munich (Germany) in 2022 and 2023, combined")
+vornahmen_comb %>% head(10) %>% kable(
+  caption = "Top 10 most popular baby names in Munich (Germany) in 2022 and 2023, combined"
+  )
 ```
 
 
@@ -139,7 +146,9 @@ e)  Use R to answer your chosen question.
 ```{r}
 american_time <- read_csv("data/Who Americans spend time with - American Time Use Survey (2009-2019).csv")
 
-american_time_clean <- american_time %>% rename(friends = `Time spent with friends, by age of respondent (United States)`, year = Year)
+american_time_clean <- american_time %>% 
+  rename(friends = `Time spent with friends, by age of respondent (United States)`, 
+         year = Year)
 ```
 
 
@@ -160,7 +169,10 @@ f)  Create a meaningful plot / figure with the dataset. Make sure to provide a f
 
 ```{r, fig.cap = "Minutes in a day Americans spend with their friends across their lives"}
 ggplot(data = american_time_clean,
-       aes(x = year, y = friends)) + geom_line() + labs(x = "age", y = "minutes of day spent with friends") + theme_minimal()
+       aes(x = year, y = friends)) + 
+  geom_line() + 
+  labs(x = "age", y = "minutes of day spent with friends") + 
+  theme_minimal()
 ```
 
 
